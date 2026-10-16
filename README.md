@@ -159,8 +159,14 @@ Each tested cell is evaluated through 5 synchronized diagnostic panels:
 
 ```
 Automated-inspection-of-PV-cells-/
-├── README.md               # Project documentation & inspection guide
+├── app.py                  # Interactive Gradio web application
+├── requirements.txt        # Full dependencies for app & model
+├── sample_images/          # Sample PV cell images for testing
+│   ├── sample_functional_cell.png
+│   ├── sample_cracked_cell.png
+│   └── sample_finger_interruption.png
 ├── project_work2.ipynb     # Complete end-to-end training & Grad-CAM notebook
+├── README.md               # Project documentation & inspection guide
 └── checkpoints/            # Saved model weights (best_model.pth, best_model3.pth)
 ```
 
@@ -176,10 +182,17 @@ cd Automated-inspection-of-PV-cells-
 
 ### 2. Install Required Dependencies
 ```bash
-pip install torch torchvision timm elpv-dataset thop matplotlib numpy scikit-learn tqdm
+pip install -r requirements.txt
 ```
 
-### 3. Run the Notebook
+### 3. Run the Interactive Gradio Web App
+Launch the local web server to test drag-and-drop cell inspection:
+```bash
+python app.py
+```
+Open `http://localhost:7860` in your browser to inspect solar cell images with real-time Grad-CAM heatmaps and defect boundary overlays!
+
+### 4. Run the Training & Diagnostic Notebook
 Open and execute [`project_work2.ipynb`](project_work2.ipynb) in **Jupyter Lab**, **VS Code**, or **Google Colab** (with a T4/A100 GPU accelerator).
 
 To generate Grad-CAM explanations for any model, run the dedicated inspection cell at the bottom of the notebook:
@@ -208,9 +221,9 @@ compare_defect_types(active_model, val_loader, n_each=3, device=DEVICE)
 - [x] **Data Regularization:** AutoAugment + CutMix for robust generalization.
 - [x] **Explainable AI Integration:** PyTorch hook-based Grad-CAM engine.
 - [x] **Industrial Inspection Dashboard:** 5-panel diagnostic card with defect area quantification and contour segmentation.
+- [x] **Web Deployment:** Interactive Gradio application (`app.py`) for drag-and-drop solar cell inspection.
 - [ ] **Multi-Class Severity Classification:** Expanding to 4-tier classification (Functional, Mild, Moderate, Severe).
 - [ ] **Vision Transformers:** Benchmarking Swin Transformer and ConvNeXt architectures.
-- [ ] **Web Deployment:** Interactive Gradio / Streamlit application for drag-and-drop solar cell inspection.
 - [ ] **Defect Object Detection:** YOLOv8-based bounding-box defect localization.
 
 ---

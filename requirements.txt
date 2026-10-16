@@ -1,0 +1,16 @@
+# Deep Learning & Computer Vision
+torch>=2.0.0
+torchvision>=0.15.0
+timm>=0.9.0
+elpv-dataset>=1.0.0
+thop>=0.1.1
+pillow>=9.5.0
+numpy>=1.24.0
+
+# Scientific & Evaluation
+scikit-learn>=1.2.0
+matplotlib>=3.7.0
+tqdm>=4.65.0
+
+# Interactive Web Application
+gradio>=4.0.0
